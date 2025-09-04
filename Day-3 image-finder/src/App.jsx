@@ -3,7 +3,7 @@ import "remixicon/fonts/remixicon.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-const API_KEY = "Z7GTi0Rs320ECsd4kXhxt3pFCHm9nCzsILGM3siBMvtbKiM3SFSV6cxj";
+const API_KEY = "Your API_KEY here";
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
