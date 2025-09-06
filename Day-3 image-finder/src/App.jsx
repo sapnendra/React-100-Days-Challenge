@@ -3,7 +3,7 @@ import "remixicon/fonts/remixicon.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-const API_KEY = "Your API_KEY here";
+const API_KEY = "Z7GTi0Rs320ECsd4kXhxt3pFCHm9nCzsILGM3siBMvtbKiM3SFSV6cxj";
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
@@ -68,7 +68,8 @@ const App = () => {
       <div className="w-9/12 mx-auto space-y-8 flex items-center justify-center flex-col py-12">
         <div className="w-full flex justify-between items-center p-5 rounded-xl bg-gray-100">
           <h1 className="w-1/2 text-4xl font-bold text-blue-600">
-            📸 Search image for - {query}
+            📸 Search images for -{" "}
+            <span className="text-3xl">{query.toUpperCase()}</span>
           </h1>
           <form onSubmit={querySearch} className="w-1/2 flex justify-end">
             <input
@@ -104,15 +105,14 @@ const App = () => {
                 />
               </div>
               <div className="h-[100px] mt-[10px] w-full p-2 flex items-center justify-between flex-col">
-                <h3 className="w-full font-medium text-2xl text-gray-600">
-                  {item.photographer} {}
+                <h3 className="w-full text-center font-medium text-xl text-gray-600">
+                  {item.photographer}
                 </h3>
-                <button className="w-full font-semibold bg-green-500 py-2 rounded-md hover:scale-102 transition-transform duration-300 cursor-pointer">
-                  <i className="ri-download-line"></i>{" "}
-                  <a href={item.src.original} target="_blank">
-                    Download
-                  </a>
-                </button>
+                <a href={item.src.original} target="_blank" className="w-full">
+                  <button className="w-full font-semibold bg-green-500 py-2 rounded-md hover:scale-102 transition-transform duration-300 cursor-pointer">
+                    <i className="ri-download-line"></i> Download
+                  </button>
+                </a>
               </div>
             </div>
           ))}
