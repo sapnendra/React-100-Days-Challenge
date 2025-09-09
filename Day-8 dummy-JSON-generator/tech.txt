@@ -1,0 +1,6 @@
+react
+tailwindcss
+antd
+animate.css
+lucide-react
+fakerjs-API
