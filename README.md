@@ -1,1 +1,1 @@
-## Practice Repository
+## 100 Days react projects repository
