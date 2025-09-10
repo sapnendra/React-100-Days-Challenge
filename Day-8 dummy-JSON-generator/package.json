@@ -14,8 +14,11 @@
     "@tailwindcss/vite": "^4.1.13",
     "animate.css": "^4.1.1",
     "antd": "^5.27.3",
+    "lucide-react": "^0.543.0",
+    "nanoid": "^5.1.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-syntax-highlighter": "^15.6.6",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
