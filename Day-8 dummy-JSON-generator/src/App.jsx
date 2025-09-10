@@ -154,115 +154,118 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-300 py-10">
-      <div className="w-9/12 mx-auto flex flex-col gap-8">
-        <div className="">
-          <h1 className="text-3xl font-bold text-center">
-            Dummy JSON Generator — Premium Dev Tool
-          </h1>
-          <p className="text-center">
-            This tool allows you to quickly generate dummy JSON data for testing
-            and development purposes. Select the type of data you need (such as
-            Users, Products, or Custom Entities) and specify the number of
-            records you want to generate. With just one click. You'll get
-            structured and formatted JSON data ready to use in your projects,
-            APIs, or databases. It helps developers save time by avoiding manual
-            data creation during prototyping and testing.
-          </p>
-        </div>
-        <div className="flex gap-6">
-          <div className="w-1/3">
-            <Card>
-              <Form
-                className="flex flex-col gap-4"
-                layout="vertical"
-                onFinish={generateData}
-                initialValues={{ data: "users", noOfData: "24" }}
-              >
-                <Form.Item
-                  label="Choose Data"
-                  name="data"
-                  rules={[{ required: true }]}
-                  className="w-full"
-                >
-                  <Select size="large" placeholder="Choose data">
-                    <Select.Option value="users">User</Select.Option>
-                    <Select.Option value="products">Products</Select.Option>
-                    <Select.Option value="payments">Payments</Select.Option>
-                    <Select.Option value="employees">Employees</Select.Option>
-                  </Select>
-                </Form.Item>
-
-                <Form.Item
-                  label="Number of Data"
-                  name="noOfData"
-                  rules={[{ required: true }]}
-                  className="w-full"
-                >
-                  <InputNumber
-                    size="large"
-                    placeholder="Enter number of data"
-                    className="!w-full"
-                    max={100}
-                  />
-                </Form.Item>
-
-                <Form.Item className="flex items-center justify-center">
-                  <Button
-                    htmlType="submit"
-                    size="large"
-                    type="primary"
-                    className="w-30"
-                  >
-                    Generate
-                  </Button>
-                </Form.Item>
-              </Form>
-            </Card>
+    <>
+      <header className="w-full text-xl text-center bg-black sticky bottom-0 py-4">
+        <p className="text-white">
+          Designed and Managed by -{" "}
+          <a
+            href="https://github.com/sapnendra"
+            className="text-yellow-600 font-semibold"
+          >
+            Sapnendra
+          </a>
+        </p>
+      </header>
+      <div className="min-h-screen bg-gray-400 py-10">
+        <div className="w-9/12 mx-auto flex flex-col gap-8">
+          <div className="flex flex-col gap-2">
+            <h1 className="text-4xl font-bold text-center">
+              Dummy JSON Generator — Premium Dev Tool
+            </h1>
+            <p className="text-center text-gray-700">
+              This tool allows you to quickly generate dummy JSON data for
+              testing and development purposes.
+            </p>
           </div>
+          <Card style={{ backgroundColor: "#f5f5f545", border: "none" }}>
+            <Form
+              className="flex gap-4"
+              layout="vertical"
+              onFinish={generateData}
+              initialValues={{ data: "users", noOfData: "24" }}
+            >
+              <Form.Item
+                style={{ color: "#fff" }}
+                label="Choose Data"
+                name="data"
+                rules={[{ required: true }]}
+                className="w-full"
+              >
+                <Select size="large" placeholder="Choose data">
+                  <Select.Option value="users">User</Select.Option>
+                  <Select.Option value="products">Products</Select.Option>
+                  <Select.Option value="payments">Payments</Select.Option>
+                  <Select.Option value="employees">Employees</Select.Option>
+                </Select>
+              </Form.Item>
 
-          <div className="w-2/3 rounded space-y-2">
-            <div className="rounded w-full h-20 flex items-start justify-between bg-[#2B2B2B] text-white p-3">
-              <h1 className="text-2xl font-semibold flex items-center h-full">
-                Payload Preview
-              </h1>
-              <div className="flex gap-3">
-                <button className="flex items-center justify-center text-md gap-1 border px-4 py-2 rounded-lg">
-                  <Tooltip title="Copy Data">
-                    <Copy onClick={() => onCopy(payload)} />
-                  </Tooltip>
-                  Copy
-                </button>
-                <button className="flex items-center justify-center text-md gap-1 border px-4 py-2 rounded-lg">
-                  <Tooltip title="Copy Data">
-                    <Download onClick={() => onCopy(payload)} />
-                  </Tooltip>
-                  Download
-                </button>
+              <Form.Item
+                label="Number of Data"
+                name="noOfData"
+                rules={[{ required: true }]}
+                className="w-full"
+              >
+                <InputNumber
+                  size="large"
+                  placeholder="Enter number of data"
+                  className="!w-full"
+                  max={100}
+                />
+              </Form.Item>
+
+              <Form.Item className="flex items-center justify-center" label=" ">
+                <Button
+                  htmlType="submit"
+                  size="large"
+                  type="primary"
+                  className="w-30"
+                >
+                  Generate
+                </Button>
+              </Form.Item>
+            </Form>
+          </Card>
+          <div className="flex gap-6">
+            <div className="w-full">
+              <div className="rounded-t-lg w-full h-20 flex items-start justify-between bg-[#2B2B2B] text-white p-3">
+                <h1 className="text-2xl font-semibold flex items-center h-full">
+                  Payload Preview
+                </h1>
+                <div className="flex gap-3">
+                  <button className="flex items-center justify-center text-md gap-1 border px-4 py-2 rounded-lg">
+                    <Tooltip title="Copy Data">
+                      <Copy onClick={() => onCopy(payload)} />
+                    </Tooltip>
+                    Copy
+                  </button>
+                  <button className="flex items-center justify-center text-md gap-1 border px-4 py-2 rounded-lg">
+                    <Tooltip title="Copy Data">
+                      <Download onClick={() => onCopy(payload)} />
+                    </Tooltip>
+                    Download
+                  </button>
+                </div>
+              </div>
+              <div className="">
+                <SyntaxHighlighter
+                  language="javascript"
+                  style={a11yDark}
+                  customStyle={{
+                    height: "450px", // fixed height
+                    overflowY: "auto", // scroll when content exceeds height
+                    scrollbarWidth: "none", // hide scrollbar in Firefox
+                    msOverflowStyle: "auto",
+                  }}
+                  showLineNumbers
+                >
+                  {payload}
+                </SyntaxHighlighter>
               </div>
             </div>
-            {payload.length === 0 ? (
-              <Empty description="Click Generate button to get your first payload" />
-            ) : (
-              <SyntaxHighlighter
-                language="javascript"
-                style={a11yDark}
-                customStyle={{
-                  height: "450px", // fixed height
-                  overflowY: "auto", // scroll when content exceeds height
-                  scrollbarWidth: "none", // hide scrollbar in Firefox
-                  msOverflowStyle: "auto",
-                  borderRadius: "8px",
-                }}
-                showLineNumbers
-              >
-                {payload}
-              </SyntaxHighlighter>
-            )}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
