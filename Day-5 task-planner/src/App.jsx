@@ -84,7 +84,6 @@ const App = () => {
         </div>
 
         <div className="flex gap-8 item-center justify-center">
-          <button onClick={() => printTasks()}></button>
           <h1 className="text-2xl font-bold lg:block hidden">{timer}</h1>
           <DatePicker classNames="!py-1.5 !cursor-pointer" />
           <button

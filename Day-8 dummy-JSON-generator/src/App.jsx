@@ -166,13 +166,13 @@ const App = () => {
           </a>
         </p>
       </header>
-      <div className="min-h-screen bg-gray-400 py-10">
-        <div className="w-9/12 mx-auto flex flex-col gap-8">
-          <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-bold text-center">
+      <div className="min-h-screen bg-gray-400 py-8">
+        <div className="w-9/12 mx-auto flex flex-col gap-4">
+          <div className="flex flex-col gap-1">
+            <h1 className="text-5xl font-bold text-center">
               Dummy JSON Generator — Premium Dev Tool
             </h1>
-            <p className="text-center text-gray-700">
+            <p className="text-lg text-center text-gray-900">
               This tool allows you to quickly generate dummy JSON data for
               testing and development purposes.
             </p>
@@ -227,8 +227,8 @@ const App = () => {
           </Card>
           <div className="flex gap-6">
             <div className="w-full">
-              <div className="rounded-t-lg w-full h-20 flex items-start justify-between bg-[#2B2B2B] text-white p-3">
-                <h1 className="text-2xl font-semibold flex items-center h-full">
+              <div className="border-b rounded-t-lg w-full h-20 flex items-center justify-between bg-[#2B2B2B] text-white px-5 py-2">
+                <h1 className="text-3xl font-bold">
                   Payload Preview
                 </h1>
                 <div className="flex gap-3">
@@ -251,7 +251,7 @@ const App = () => {
                   language="javascript"
                   style={a11yDark}
                   customStyle={{
-                    height: "450px", // fixed height
+                    height: "400px", // fixed height
                     overflowY: "auto", // scroll when content exceeds height
                     scrollbarWidth: "none", // hide scrollbar in Firefox
                     msOverflowStyle: "auto",
