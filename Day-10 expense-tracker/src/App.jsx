@@ -29,8 +29,8 @@ const App = () => {
   };
 
   const saveExpense = (values) => {
-    values.date = moment(values.date).toDate()
-    updateExpense(editId, values)
+    values.date = moment(values.date).toDate();
+    updateExpense(editId, values);
     handleClose();
   };
 
@@ -48,7 +48,18 @@ const App = () => {
   };
 
   return (
-    <div className="bg-slate-900 min-h-screen py-10">
+    <div className="bg-slate-900 min-h-screen pb-10">
+      <header className="w-full text-xl text-center bg-black sticky bottom-0 py-4 mb-10">
+        <p className="text-white">
+          Designed and Managed by -{" "}
+          <a
+            href="https://github.com/sapnendra"
+            className="text-yellow-600 font-semibold"
+          >
+            Sapnendra
+          </a>
+        </p>
+      </header>
       <div className="w-9/12 mx-auto bg-white rounded-xl">
         <div className="p-8 flex flex-col gap-6">
           <div className="flex items-center justify-between mb-4">
