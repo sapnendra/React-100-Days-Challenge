@@ -8,7 +8,7 @@ const API_KEY = "Z7GTi0Rs320ECsd4kXhxt3pFCHm9nCzsILGM3siBMvtbKiM3SFSV6cxj";
 const App = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [page, SetPage] = useState(1);
+  const [page, setPage] = useState(1);
   const [query, setQuery] = useState("Nature");
 
   const fetchImage = async () => {
@@ -38,7 +38,7 @@ const App = () => {
   };
 
   const loadMore = () => {
-    SetPage(page + 1);
+    setPage(page + 1);
   };
 
   const querySearch = (e) => {
