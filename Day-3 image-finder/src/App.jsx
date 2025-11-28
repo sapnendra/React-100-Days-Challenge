@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "remixicon/fonts/remixicon.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import Navbar from "./components/Navbar";
+import Header from "./components/Header";
+import Images from "./components/Images";
 
 const API_KEY = "Z7GTi0Rs320ECsd4kXhxt3pFCHm9nCzsILGM3siBMvtbKiM3SFSV6cxj";
 
@@ -19,11 +22,11 @@ const App = () => {
           Authorization: API_KEY,
         },
       };
+      
       const res = await axios.get(
         `https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`,
         options
       );
-      console.log(res.data.photos);
 
       setPhotos([...photos, ...res.data.photos]);
     } catch (err) {
@@ -54,72 +57,27 @@ const App = () => {
 
   return (
     <div className="min-h-screen">
-      <header className="w-full text-xl text-center bg-black sticky bottom-0 py-4">
-        <p className="text-white">
-          Designed and Managed by -{" "}
-          <a
-            href="https://github.com/sapnendra"
-            className="text-yellow-600 font-semibold"
-          >
-            Sapnendra
-          </a>
-        </p>
-      </header>
+      <Header />
       <div className="w-9/12 mx-auto space-y-8 flex items-center justify-center flex-col py-12">
-        <div className="w-full flex justify-between items-center p-5 rounded-xl bg-gray-100">
-          <h1 className="w-1/2 text-4xl font-bold text-blue-600">
-            📸 Search images for -{" "}
-            <span className="text-3xl">{query.toUpperCase()}</span>
-          </h1>
-          <form onSubmit={querySearch} className="w-1/2 flex justify-end">
-            <input
-              type="text"
-              className="w-1/2 border border-gray-300 p-2 rounded-md focus:outline-blue-600"
-              placeholder="Search for images..."
-              required
-            />
-            <button
-              type="submit"
-              className="font-semibold bg-blue-600 text-white p-2 rounded-md ml-2 hover:bg-blue-700 cursor-pointer"
-            >
-              Search
-            </button>
-          </form>
-        </div>
+
+        <Navbar query={query} querySearch={querySearch} />
+
         {photos.length === 0 && (
           <h1 className="w-full text-4xl font-bold text-center">
             Search query not found
           </h1>
         )}
+
         <div className="grid lg:grid-cols-5 lg:gap-12 gap-4">
           {photos.map((item, idx) => (
-            <div
-              key={idx}
-              className="min-h-[320px] w-[250px] bg-gray-200 rounded-xl overflow-hidden"
-            >
-              <div className="img-box h-[210px]">
-                <img
-                  className="object-cover w-full h-full"
-                  src={item.src.medium}
-                  alt={item.alt}
-                />
-              </div>
-              <div className="h-[100px] mt-[10px] w-full p-2 flex items-center justify-between flex-col">
-                <h3 className="w-full text-center font-medium text-xl text-gray-600">
-                  {item.photographer}
-                </h3>
-                <a href={item.src.original} target="_blank" className="w-full">
-                  <button className="w-full font-semibold bg-green-500 py-2 rounded-md hover:scale-102 transition-transform duration-300 cursor-pointer">
-                    <i className="ri-download-line"></i> Download
-                  </button>
-                </a>
-              </div>
-            </div>
+            <Images key={idx} item={item} />
           ))}
         </div>
+
         {loading && (
           <i className="ri-loader-line text-4xl text-gray-400 animate-spin"></i>
         )}
+
         {photos.length > 0 && (
           <button
             onClick={loadMore}
